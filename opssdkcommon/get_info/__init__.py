@@ -1,16 +1,19 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-'''
-# @Time    : 2019/8/5 16:05
+# -*- coding: utf-8 -*-
+# Description：解析配置文件
+
+# @Time    : 2019/8/6 11:42
 # @Author  : hubo
 # @Email   : hagic.hhj@gmail.com
-role   : 解析配置文件
-'''
+# @File    : __init__11.py
 
 import json
 import os
 import configparser
 
+'''
+输入json格式内容配置文件，输出字典数据
+'''
 def json_to_dict(conf_path):
     if not os.path.isfile(conf_path):
         raise FileNotFoundError('{0} file does not exist'.format(conf_path))
@@ -23,7 +26,18 @@ def json_to_dict(conf_path):
         return conf_data
 
 
+'''ini 文件读取，格式为:
+[db]
+db_host = 127.0.0.1
+db_port = 69
+db_user = root
+db_pass = root
+host_port = 69
 
+[concurrent]
+thread = 10
+processor = 20
+'''
 class IniToDict:
     def __init__(self, conf_path, section):
         self.path = conf_path
@@ -36,7 +50,7 @@ class IniToDict:
 
         ###解析文件
         fh_conf = configparser.ConfigParser()
-        fh_conf.read(self.path)
+        fh_conf.read(self.path, encoding="utf-8")
 
         ###确认配置文件有无配置层
         list_section = fh_conf.sections()

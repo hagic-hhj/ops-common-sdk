@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-'''
-author : shenshuo
-date   : 2018年2月5日13:37:54
-role   : 运维操作
-'''
+# -*- coding: utf-8 -*-
+# Description：运维操作
+
+# @Time    : 2019/8/6 15:55
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : __init__.py
 
 import os
 import sys

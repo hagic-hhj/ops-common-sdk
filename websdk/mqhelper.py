@@ -9,7 +9,7 @@ import traceback
 import pika
 from .consts import const
 from .configs import configs
-from .web_logs import ins_log
+from .web_logs1 import ins_log
 from .error import ConfigError
 
 

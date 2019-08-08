@@ -1,10 +1,12 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-'''
-author : shenshuo
-date   : 2018-3-7
-role   : 工具类
-'''
+# -*- coding: utf-8 -*-
+# Description： 工具类
+
+# @Time    : 2019/8/6 15:46
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : __init__11.py
+
 
 import time
 from opssdkcommon.logs import Log
@@ -12,6 +14,7 @@ from opssdkcommon.logs import Log
 log_path = '/log/yunwei/yunwei.log'
 log_ins = Log('utils', log_path)
 
+##计算函数运行时间
 def timeit(func):
     def wrapper(*args, **kwargs):
         start_time = time.time()

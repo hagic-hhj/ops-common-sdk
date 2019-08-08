@@ -117,12 +117,12 @@ print(is_ip('192.168.1.11'))
 - check_disk 检查目录磁盘剩余空间是否大于10G
 - 参数1 检查的目录 参数2 大于磁盘剩余量
 ```python
-from opssdkcommon.operate.check import check_disk
+from opssdkcommon.operate.check1 import check_disk
 print(check_disk('/data1', 10))
 ```
 - check_sys_version 检查系统版本
 ```python
-from opssdkcommon.operate.check import check_sys_version
+from opssdkcommon.operate.check1 import check_sys_version
 print(check_sys_version())
 ```
 - get_ip_address  根据网卡获取ip地址
@@ -148,7 +148,7 @@ print(itd.get_option('v1'))
 
 ## mysql 操作
 ```python
-from opssdkcommon.operate.mysql import MysqlBase
+from opssdkcommon.operate.mysql1 import MysqlBase
 mysql_dict = {"host": "172.16.0.223", "port": 3306, "user": "root", "passwd": "ljXrcyn7", "db": "zhi"}
 mb = MysqlBase(**mysql_dict)
 ### 查询 返回查询值
@@ -160,7 +160,7 @@ mb.change(sql)
 ## mail
 发送邮件
 ```python
-from opssdkcommon.operate.mail import Mail
+from opssdkcommon.operate.mail1 import Mail
 mailto_list = "592690719@qq.com, huboc@zbj.com"
 sm = Mail()
 """
@@ -181,7 +181,7 @@ sm.send_mail(mailto_list, '运维', "标题", "内容", 'plain', '/tmp/cof.ini')
 
 ## salt api 操作
 ```python
-from  opssdkcommon.operate.centralization import SaltApi
+from  opssdkcommon.operate.centralization1 import SaltApi
 my_salt = SaltApi(url='https://127.0.0.1:8001/', username="saltapi", password="shenshuo")
 ### 主机  执行方法   命令
 req = my_salt.run('*', 'cmd.run_all', 'w')

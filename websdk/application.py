@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-"""
-Author : ming
-date   : 2018年1月12日13:43:27
-role   : 定制 Application
-"""
+# -*- coding: utf-8 -*-
+# Description：定制 Application
+
+# @Time    : 2019/8/7 10:18
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : application.py
 
 from shortuuid import uuid
 from tornado import httpserver, ioloop
@@ -15,6 +16,8 @@ from .web_logs import ins_log
 
 from .configs import configs
 
+#用来定义options选项变量的方法，定义的变量可以在全局的tornado.options.options中获取使用
+#当前tornado.options.options.port = options.port
 define("addr", default='0.0.0.0', help="run on the given ip address", type=str)
 define("port", default=8000, help="run on the given port", type=int)
 define("progid", default=str(uuid()), help="tornado progress id", type=str)
@@ -24,6 +27,7 @@ class Application(tornadoApp):
     """ 定制 Tornado Application 集成日志、sqlalchemy 等功能 """
 
     def __init__(self, handlers=None, default_host="", transforms=None, **settings):
+        #转换命令行参数，并将转换后的值对应的设置到全局options对象相关属性上。追加命令行参数的方式是--myoption=myvalue
         tnd_options.parse_command_line()
         if configs.can_import:
             configs.import_dict(**settings)
@@ -37,6 +41,7 @@ class Application(tornadoApp):
         """
         启动 tornado 服务
         :return:
+        不想在异常发生时结束程序，只需在try里捕获它。
         """
         try:
             ins_log.read_log('info', 'progressid: %(progid)s' % dict(progid=options.progid))
@@ -47,6 +52,9 @@ class Application(tornadoApp):
             self.io_loop.stop()
         except:
             import traceback
+            #1、print_exc()：是对异常栈输出
+            #2、format_exc()：是把异常栈以字符串的形式返回，print(traceback.format_exc()) 就相当于traceback.print_exc()
+            #3、print_exception()：traceback.print_exc()实现方式就是traceback.print_exception(sys.exc_info())，可以点sys.exc_info()进去看看实现
             ins_log.read_log('error', '%(tra)s' % dict(tra=traceback.format_exc()))
 
 

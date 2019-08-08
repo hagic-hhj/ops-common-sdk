@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-'''
-Author : SS
-date   : 2017年12月29日14:43:24
-role   : 集中化管理工具的使用
-'''
+# -*- coding: utf-8 -*-
+# Description：集中化管理工具的使用
+
+# @Time    : 2019/8/6 17:36
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : centralization.py
 
 import requests
 import json

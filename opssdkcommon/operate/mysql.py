@@ -1,13 +1,14 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-'''
-author : shenshuo
-date   : 2018年2月5日13:37:54
-role   : mysql操作
-'''
+# -*- coding: utf-8 -*-
+# Description：mysql操作
+
+# @Time    : 2019/8/6 16:45
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : mysql.py
 
 import pymysql
-from opssdk.logs import Log
+from opssdkcommon.logs import Log
 
 
 class MysqlBase:
@@ -30,7 +31,9 @@ class MysqlBase:
 
     ###释放资源
     def __del__(self):
+        #关闭指针对象
         self.cur.close()
+        #关闭连接对象
         self.conn.close()
 
     def __exit__(self, exc_type, exc_val, exc_tb):

@@ -1,10 +1,12 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-'''
-Author : ss
-date   : 2018-3-19
-role   : web  log
-'''
+# -*- coding: utf-8 -*-
+# Description：web  log
+
+# @Time    : 2019/8/7 11:07
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : web_logs.py
+
 
 import logging
 import os
@@ -15,7 +17,7 @@ log_fmt = ''.join(('PROGRESS:%(progress_id) -5s %(levelname) ', '-10s %(asctime)
                                                                 '-30s LINE.NO:%(lineno) -5d : %(message)s'))
 log_key = 'logger_key'
 
-
+#创建实现单例模式的装饰器 https://www.cnblogs.com/jiangxinyang/p/8454418.html
 def singleton(class_):
     instances = {}
 
@@ -28,6 +30,7 @@ def singleton(class_):
 
 
 class ProgressLogFilter(logging.Filter):
+    ##修改日志进程id，返回True表示记录，返回False表示过滤掉
     def filter(self, record):
         record.progress_id = Logger().progress_id
         return True

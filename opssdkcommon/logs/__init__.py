@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-'''
-author : shenshuo
-date   : 2018年2月5日13:37:54
-role   : 运维日志
-'''
+# -*- coding: utf-8 -*-
+# Description：日志处理
+
+# @Time    : 2019/8/6 14:41
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : __init__1.py
 
 import logging
 import os
@@ -37,13 +38,15 @@ class Log:
         formatter = logging.Formatter('%(asctime)s  %(name)s  %(levelname)s  %(message)s')
         fh.setFormatter(formatter)
 
-        ###给logger添加handler
+        ###将相应的handler添加在logger对象中
         logger.addHandler(fh)
         logger.addHandler(th)
 
-        ###记录日志
+        ###开始记录日志
         level_dic = {'debug': logger.debug, 'info': logger.info, 'warning': logger.warning, 'error': logger.error,
                      'critical': logger.critical}
+
+        ##最终如：logger.debug(log_message)
         level_dic[log_level](log_message)
 
         ###删除重复记录

@@ -1,10 +1,13 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-"""
-author : shenshuo
-date   : 2018年2月6日16:28:03
-role   : 发送邮件
-"""
+# -*- coding: utf-8 -*-
+# Description：发送邮件
+
+# @Time    : 2019/8/6 16:46
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : mail.py
+
+
 import smtplib
 import os
 from email.mime.text import MIMEText

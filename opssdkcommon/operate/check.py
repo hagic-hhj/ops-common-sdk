@@ -1,18 +1,20 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-"""
-author : shenshuo
-date   : 2018年2月5日19:23:09
-role   : 检查
-"""
+# -*- coding: utf-8 -*-
+# Description：检查类
+
+# @Time    : 2019/8/6 17:35
+# @Author  : hubo
+# @Email   : hagic.hhj@gmail.com
+# @File    : check.py
+
 import os
 import socket
 import fcntl
 import struct
-from opssdk.operate import exec_shell
+from opssdkcommon.operate import exec_shell
 
-
-def check_disk(d='/data1', f=10):
+##目录空间剩余小于10返回false
+def check_disk(d='/data', f=10):
     vfs = os.statvfs(d)
     available = vfs.f_bsize * vfs.f_bavail / 1024 / 1024 / 1024
     if available > f:
@@ -25,7 +27,8 @@ def check_sys_version():
         "awk -F'release' '{print $2}' /etc/redhat-release | awk '{print $1}'|awk -F'.' '{print $1}'")
     return res[0]
 
-
+#获取网卡 IPv4 地址
+#https://www.cnblogs.com/my_life/articles/9187714.html
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     return socket.inet_ntoa(fcntl.ioctl(
