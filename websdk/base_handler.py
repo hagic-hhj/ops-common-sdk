@@ -11,6 +11,7 @@ import jwt
 
 class BaseHandler(RequestHandler):
     def __init__(self, *args, **kwargs):
+        #生成短的uuid,内部使用基于随机数的uuid4()来生成唯一的uudi,长度22
         self.new_csrf_key = str(shortuuid.uuid())
         self.user_id, self.username, self.nickname, self.email, self.is_super = None, None, None, None, False
         self.is_superuser = self.is_super

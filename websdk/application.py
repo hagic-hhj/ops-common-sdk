@@ -26,7 +26,22 @@ define("progid", default=str(uuid()), help="tornado progress id", type=str)
 class Application(tornadoApp):
     """ 定制 Tornado Application 集成日志、sqlalchemy 等功能 """
 
+
     def __init__(self, handlers=None, default_host="", transforms=None, **settings):
+        """等价于
+        #自定义应用
+        class MyApplication(tornado.web.Application):
+        def __init__(self, urls, configs):
+        super(MyApplication, self).__init__(handlers=urls, **configs)
+        #创建服务器
+        tornado.options.parse_command_line()
+        http_server = tornado.httpserver.HTTPServer(MyApplication(urls,configs))
+        http_server.listen(options.port)
+        import tornado.ioloop
+        tornado.ioloop.IOLoop.current().start()
+        #https://www.e-learn.cn/content/qita/949678
+        """
+
         #转换命令行参数，并将转换后的值对应的设置到全局options对象相关属性上。追加命令行参数的方式是--myoption=myvalue
         tnd_options.parse_command_line()
         if configs.can_import:

@@ -35,6 +35,9 @@ class Config(dict):
     def can_import(self):
         return self.__can_import
 
+    '''
+    解析字典参数变量，并根据self.__can_import开关保证配置参数只能被引用一次
+    '''
     def import_dict(self, **kwargs):
         if self.__can_import:
             for k, v in kwargs.items():

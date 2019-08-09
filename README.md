@@ -41,7 +41,7 @@ $ pip3 install -U git+https://github.com/hagic-hhj/opssdkcommon.git
 ```shell
 .
 ├── README.md    项目readme
-└── opssdk
+└── opssdkcommon
     ├── logs     日志模块
     ├── install  安装模块
     ├── get_info 配置获取
@@ -50,7 +50,7 @@ $ pip3 install -U git+https://github.com/hagic-hhj/opssdkcommon.git
         ├── mysql           mysql 操作
         ├── mail            发送邮件
         └── centralization  集中化管理工具 salt
-    └── websdk      web开发使用
+└── websdk      tornado框架web开发使用
     ├── application.py          tornado application
     ├── base_handler.py         tornado  基类
     ├── cache.py                处理redis缓存
