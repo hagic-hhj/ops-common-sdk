@@ -9,7 +9,7 @@
 
 
 import time
-from opssdkcommon.logs import Log
+from opssdkcore.logs import Log
 
 log_path = '/log/yunwei/yunwei.log'
 log_ins = Log('utils', log_path)

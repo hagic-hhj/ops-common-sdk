@@ -11,7 +11,19 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import os
 
+#创建实现单例模式的装饰器 https://www.cnblogs.com/jiangxinyang/p/8454418.html
+def singleton(class_):
+    instances = {}
 
+    def getinstance(*args, **kwargs):
+        if class_ not in instances:
+            instances[class_] = class_(*args, **kwargs)
+        return instances[class_]
+
+    return getinstance
+
+
+@singleton
 class FileLog:
     """
     1、以“a”（追加）的方式将日志输出到文件，如果文件不存在，则自动创建该文件
@@ -54,6 +66,7 @@ class FileLog:
         logger.removeHandler(fh)
 
 
+@singleton
 class ConsoleLog:
     """
     将日志输出到Stream，比如sys.stderr、sys.stdour、文件流等；即输出到控制台，可被supervisor捕获日志
@@ -89,6 +102,7 @@ class ConsoleLog:
         logger.removeHandler(th)
 
 
+@singleton
 class TimedRotatingLog:
     """
     将日志输出到文件，可以通过设置时间，使日志根据不同的时间自动创建并输出到不同的文件中。
@@ -133,6 +147,7 @@ class TimedRotatingLog:
         logger.removeHandler(handler)
 
 
+@singleton
 class RotatingFileLog:
     """
     将日志输出到文件，可以通过设置文件大小，文件达到上限后自动创建一个新的文件来继续输出文件。

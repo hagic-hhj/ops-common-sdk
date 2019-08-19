@@ -8,7 +8,7 @@
 # @File    : mysql.py
 
 import pymysql
-from opssdkcommon.logs import Log
+from opssdkcore.logs import Log
 
 
 class MysqlBase:

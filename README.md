@@ -72,7 +72,7 @@ $ pip3 install -U git+https://github.com/hagic-hhj/opssdkcommon.git
 ## logs
 ```python
 import os
-from opssdkcommon.logs import Log
+from opssdkcore.logs import Log
 ### 日志路径
 log_path = '/log/yunwei/{0}.log'.format(os.path.basename(__file__))
 ### 添加日志标识
@@ -84,31 +84,31 @@ log_ins.write_log('info', 'ceshi')
 ## operate
 - exec_shell 执行shell命令
 ```python
-from opssdkcommon.operate import exec_shell
+from opssdkcore.operate import exec_shell
 recode,stdout = exec_shell('ls')
 # recode 为0 则代表成功，stdout 内容 为列表格式 半月逗号分隔
 # recode 非0 则代表失败，stdout 内容 字符串格式
 ```
 - exclusiveLock  脚本锁,防止脚本重复执行
 ```python
-from opssdkcommon.operate import exclusiveLock
+from opssdkcore.operate import exclusiveLock
 exclusiveLock(脚本名称)
 ```
 - MyCrypt  加密解密模块
 ```python
-from opssdkcommon.operate import MyCrypt
+from opssdkcore.operate import MyCrypt
 mc = MyCrypt()                  # 实例化
 mc.my_encrypt('ceshi')          # 对字符串ceshi进行加密
 mc.my_decrypt('')               # 对密文进行解密
 ```
 - now_time 获取当前时间 '%Y-%m-%d-%H-%M-%S'格式
 ```python
-from opssdkcommon.operate import now_time
+from opssdkcore.operate import now_time
 print(now_time())
 ```
 - is_ip 判断是否是IP ,True代表是，False代表不是
 ```python
-from opssdkcommon.operate import is_ip
+from opssdkcore.operate import is_ip
 print(is_ip('192.168.1.11'))
 ```
 
@@ -117,12 +117,12 @@ print(is_ip('192.168.1.11'))
 - check_disk 检查目录磁盘剩余空间是否大于10G
 - 参数1 检查的目录 参数2 大于磁盘剩余量
 ```python
-from opssdkcommon.operate.check1 import check_disk
+from opssdkcore.operate.check1 import check_disk
 print(check_disk('/data1', 10))
 ```
 - check_sys_version 检查系统版本
 ```python
-from opssdkcommon.operate.check1 import check_sys_version
+from opssdkcore.operate.check1 import check_sys_version
 print(check_sys_version())
 ```
 - get_ip_address  根据网卡获取ip地址
@@ -135,12 +135,12 @@ print(get_ip_address('lo'))
 解析配置文件
 - json_to_dict 根据json文件的路径 把内容转化成字典格式
 ```python
-from opssdkcommon.get_info import json_to_dict
+from opssdkcore.get_info import json_to_dict
 print(json_to_dict('/tmp/conf.json'))
 ```
 - IniToDict 根据ini文件的路径、节点 把内容转化成字典格式
 ```python
-from opssdkcommon.get_info import IniToDict
+from opssdkcore.get_info import IniToDict
 itd = IniToDict('/tmp/conf.ini','config') # 实例化
 print(itd.get_option())
 print(itd.get_option('v1'))
@@ -148,7 +148,7 @@ print(itd.get_option('v1'))
 
 ## mysql 操作
 ```python
-from opssdkcommon.operate.mysql1 import MysqlBase
+from opssdkcore.operate.mysql1 import MysqlBase
 mysql_dict = {"host": "172.16.0.223", "port": 3306, "user": "root", "passwd": "ljXrcyn7", "db": "zhi"}
 mb = MysqlBase(**mysql_dict)
 ### 查询 返回查询值
@@ -160,7 +160,7 @@ mb.change(sql)
 ## mail
 发送邮件
 ```python
-from opssdkcommon.operate.mail1 import Mail
+from opssdkcore.operate.mail1 import Mail
 mailto_list = "592690719@qq.com, huboc@zbj.com"
 sm = Mail()
 """
@@ -181,7 +181,7 @@ sm.send_mail(mailto_list, '运维', "标题", "内容", 'plain', '/tmp/cof.ini')
 
 ## salt api 操作
 ```python
-from  opssdkcommon.operate.centralization1 import SaltApi
+from  opssdkcore.operate.centralization1 import SaltApi
 my_salt = SaltApi(url='https://127.0.0.1:8001/', username="saltapi", password="shenshuo")
 ### 主机  执行方法   命令
 req = my_salt.run('*', 'cmd.run_all', 'w')

@@ -11,7 +11,7 @@ import os
 import socket
 import fcntl
 import struct
-from opssdkcommon.operate import exec_shell
+from opssdkcore.operate import exec_shell
 
 ##目录空间剩余小于10返回false
 def check_disk(d='/data', f=10):
