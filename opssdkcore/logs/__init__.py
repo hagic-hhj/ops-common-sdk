@@ -34,6 +34,14 @@ class FileLog:
         self.logFile = log_file
 
     def write_log(self, log_level, log_message):
+        """
+        解决实例化对象作为参数，再取实例化对象参数时参数变为元组情况
+        """
+        if isinstance(self.logFlag, tuple):
+            self.logFlag = ''.join(self.logFlag)
+        if isinstance(self.logFile, tuple):
+            self.logFile = ''.join(self.logFile)
+
         ###创建一个logger
         logger = logging.getLogger(self.logFlag)
         logger.setLevel(logging.DEBUG)
@@ -75,6 +83,12 @@ class ConsoleLog:
         self.logFlag = log_flag
 
     def write_log(self, log_level, log_message):
+        """
+        解决实例化对象作为参数，再取实例化对象参数时参数变为元组情况
+        """
+        if isinstance(self.logFlag, tuple):
+            self.logFlag = ''.join(self.logFlag)
+
         ###创建一个logger
         logger = logging.getLogger(self.logFlag)
         logger.setLevel(logging.DEBUG)
@@ -112,6 +126,14 @@ class TimedRotatingLog:
         self.logFile = logFile
 
     def write_log(self, log_level, log_message):
+        """
+        解决实例化对象作为参数，再取实例化对象参数时参数变为元组情况
+        """
+        if isinstance(self.logFlag, tuple):
+            self.logFlag = ''.join(self.logFlag)
+        if isinstance(self.logFile, tuple):
+            self.logFile = ''.join(self.logFile)
+
         ###创建一个logger
         logger = logging.getLogger(self.logFlag)
         logger.setLevel(logging.DEBUG)
@@ -157,6 +179,14 @@ class RotatingFileLog:
         self.logFile = logFile
 
     def write_log(self, log_level, log_message):
+        """
+        解决实例化对象作为参数，再取实例化对象参数时参数变为元组情况
+        """
+        if isinstance(self.logFlag, tuple):
+            self.logFlag = ''.join(self.logFlag)
+        if isinstance(self.logFile, tuple):
+            self.logFile = ''.join(self.logFile)
+
         ###创建一个logger
         logger = logging.getLogger(self.logFlag)
         logger.setLevel(logging.DEBUG)
